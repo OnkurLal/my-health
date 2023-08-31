@@ -4,7 +4,7 @@
 <a href="{% url 'delete_medication' medication.id %}">Delete Medication</a>
 {% endblock nav%}
 <main>
-  <div>
+  <div class="record-section">
     <h1>Update Medication Information</h1>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}

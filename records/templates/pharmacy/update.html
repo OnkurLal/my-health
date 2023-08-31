@@ -4,7 +4,7 @@
 <a href="{% url 'delete_pharmacy' pharmacy.id %}"> Delete Pharamacy </a>
 {% endblock nav%}
 <main>
-  <div>
+  <div class="record-section">
     <h1>Update Pharmacy Information</h1>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}

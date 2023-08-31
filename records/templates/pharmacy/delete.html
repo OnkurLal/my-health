@@ -3,7 +3,7 @@
 {% block nav %}
 {% endblock nav%}
 <main>
-  <div>
+  <div class="record-section">
     <h1>Are you sure you want to delete {{ pharmacy.name }}</h1>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}

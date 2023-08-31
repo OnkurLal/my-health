@@ -4,7 +4,7 @@
 <a href="{% url 'delete_disease' disease.id %}">Delete Disease</a>
 {% endblock nav%}
 <main>
-  <div>
+  <div class="record-section">
     <h1>Edit Disease/Condition</h1>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}

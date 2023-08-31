@@ -5,9 +5,9 @@
 <main>
   <div>
     <h1>{{ user.first_name }}'s Record</h1>
-    <div>
+    <div class="record-section">
       <h2>Personal Details</h2>
-      <table>
+      <table class="record-table">
         <thead>
           <tr>
             <th>Height</th>
@@ -31,20 +31,20 @@
         </a>
       </p>
     </div>
-    <div>
+    <div class="record-section">
       <h2>Diseases/Conditions</h2>
-      <ul>
+      <div class="record-grid">
         {% for disease in user.diseases.all %}
-        <li>
+        <p>
           <a href="{% url 'update_disease' disease.id %}">{{ disease.name }}</a>
-        </li>
+        </p>
         {% endfor %}
-        <p><a href="{% url 'create_disease' %}">Add Disease/Condition</a></p>
-      </ul>
+      </div>
+      <p><a href="{% url 'create_disease' %}">Add Disease/Condition</a></p>
     </div>
-    <div>
+    <div class="record-section">
       <h2>Doctors</h2>
-      <table>
+      <table class="record-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -68,23 +68,33 @@
       </table>
       <p><a href="{% url 'create_doctor' %}">Add Doctor</a></p>
     </div>
-    <div>
+    <div class="record-section">
       <h2>Pharmacies</h2>
-      <ul>
-        {% for pharmacy in user.pharmacies.all %}
-        <li>
-          <a href="{% url 'update_pharmacy' pharmacy.id %}">
-            {{ pharmacy.name }}
-          </a>
-          : {{ pharmacy.phone_number }}
-        </li>
-        {% endfor %}
-        <p><a href="{% url 'create_pharmacy' %}">Add Pharmacy</a></p>
-      </ul>
+      <table class="record-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pharmacy in user.pharmacies.all %}
+          <tr>
+            <td>
+              <a href="{% url 'update_pharmacy' pharmacy.id %}">
+                {{ pharmacy.name }}
+              </a>
+            </td>
+            <td>{{ pharmacy.phone_number }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p><a href="{% url 'create_pharmacy' %}">Add Pharmacy</a></p>
     </div>
-    <div>
+    <div class="record-section">
       <h2>Medications</h2>
-      <table>
+      <table class="record-table">
         <thead>
           <tr>
             <th>Name</th>
