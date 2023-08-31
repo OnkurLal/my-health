@@ -1,8 +1,119 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %} {% block title %} My Health Record {% endblock title %} {% block content %}
+{% block nav %}
+{% endblock nav%}
 <main>
   <div>
-    <h1>My Record</h1>
+    <h1>{{ user.first_name }}'s Record</h1>
+    <div>
+      <h2>Personal Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Height</th>
+            <th>Weight (lbs.)</th>
+            <th>Blood Pressure</th>
+            <th>Cholesterol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ user.details.all.0.height }}</td>
+            <td>{{ user.details.all.0.weight }}</td>
+            <td>{{ user.details.all.0.blood_pressure }}</td>
+            <td>{{ user.details.all.0.cholesterol }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <a href="{% url 'update_details' user.details.all.0.id %}">
+          Edit Personal Details
+        </a>
+      </p>
+    </div>
+    <div>
+      <h2>Diseases/Conditions</h2>
+      <ul>
+        {% for disease in user.diseases.all %}
+        <li>
+          <a href="{% url 'update_disease' disease.id %}">{{ disease.name }}</a>
+        </li>
+        {% endfor %}
+        <p><a href="{% url 'create_disease' %}">Add Disease/Condition</a></p>
+      </ul>
+    </div>
+    <div>
+      <h2>Doctors</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Specialty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doctor in user.doctors.all %}
+          <tr>
+            <td>
+              <a href="{% url 'update_doctor' doctor.id %}">
+                {{ doctor.name }}
+              </a>
+            </td>
+            <td>{{ doctor.phone_number }}</td>
+            <td>{{ doctor.specialty }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p><a href="{% url 'create_doctor' %}">Add Doctor</a></p>
+    </div>
+    <div>
+      <h2>Pharmacies</h2>
+      <ul>
+        {% for pharmacy in user.pharmacies.all %}
+        <li>
+          <a href="{% url 'update_pharmacy' pharmacy.id %}">
+            {{ pharmacy.name }}
+          </a>
+          : {{ pharmacy.phone_number }}
+        </li>
+        {% endfor %}
+        <p><a href="{% url 'create_pharmacy' %}">Add Pharmacy</a></p>
+      </ul>
+    </div>
+    <div>
+      <h2>Medications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Strength</th>
+            <th>Directions</th>
+            <th>Prescriber</th>
+            <th>Condition Used For</th>
+            <th>Pharmacy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for medication in user.medications.all %}
+          <tr>
+            <td>
+              <a href="{% url 'update_medication' medication.id %}"
+                >{{ medication.name }}</a
+              >
+            </td>
+            <td>{{ medication.strength }}</td>
+            <td>{{ medication.directions }}</td>
+            <td>{{ medication.doctor }}</td>
+            <td>{{ medication.condition_used_for }}</td>
+            <td>{{ medication.pharmacy }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p><a href="{% url 'create_medication' %}">Add Medication</a></p>
+    </div>
   </div>
 </main>
 {% endblock content %}

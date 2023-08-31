@@ -9,17 +9,7 @@ def home(request):
 
 @login_required
 def my_record(request):
-    medications = Medication.objects.filter(patient=request.user)
-    doctors = Doctor.objects.filter(patient=request.user)
-    diseases = Disease.objects.filter(patient=request.user)
-    pharmacies = Pharmacy.objects.filter(patient=request.user)
-    context = {
-        'medications': medications,
-        'doctors': doctors,
-        'diseases': diseases,
-        'pharmacies': pharmacies,
-    }
-    return render(request, 'records/my_record.html', context)
+    return render(request, 'records/my_record.html',)
 
 @login_required
 def create_details(request):
@@ -80,6 +70,7 @@ def update_disease(request, id):
         form = DiseaseForm(instance=disease)
     context = {
         'form': form,
+        'disease': disease,
     }
     return render(request, 'diseases/update.html', context)
 
@@ -121,6 +112,7 @@ def update_doctor(request, id):
         form = DoctorForm(instance=doctor)
     context = {
         'form': form,
+        'doctor': doctor,
     }
     return render(request, 'doctors/update.html', context)
 
@@ -162,6 +154,7 @@ def update_pharmacy(request, id):
         form = PharmacyForm(instance=pharmacy)
     context = {
         'form': form,
+        'pharmacy': pharmacy,
     }
     return render(request, 'pharmacy/update.html', context)
 
@@ -174,3 +167,45 @@ def delete_pharmacy(request, id):
         'pharmacy': pharmacy,
     }
     return render(request, 'pharmacy/delete.html',context)
+
+@login_required
+def create_medication(request):
+    if request.method == 'POST':
+        form = MedicationForm(request.POST)
+        if form.is_valid():
+            medication = form.save(False)
+            medication.patient = request.user
+            medication.save()
+            return redirect('my_record')
+    else:
+        form = MedicationForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'medication/create.html', context)
+
+@login_required
+def update_medication(request, id):
+    medication = get_object_or_404(Medication, id=id)
+    if request.method == 'POST':
+        form = MedicationForm(request.POST, instance=medication)
+        if form.is_valid():
+            form.save()
+            return redirect('my_record')
+    else:
+        form = MedicationForm(instance=medication)
+    context = {
+        'form': form,
+        'medication': medication,
+    }
+    return render(request, 'medication/update.html', context)
+
+def delete_medication(request, id):
+    medication = get_object_or_404(Medication, id=id)
+    if request.method == 'POST':
+        medication.delete()
+        return redirect('my_record')
+    context = {
+        'medication': medication,
+    }
+    return render(request, 'medication/delete.html',context)

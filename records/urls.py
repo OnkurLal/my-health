@@ -1,5 +1,5 @@
 from django.urls import path
-from records.views import my_record, home, create_details, update_details, create_disease, update_disease,delete_disease, create_doctor, update_doctor, delete_doctor, create_pharmacy, update_pharmacy, delete_pharmacy
+from records.views import my_record, home, create_details, update_details, create_disease, update_disease,delete_disease, create_doctor, update_doctor, delete_doctor, create_pharmacy, update_pharmacy, delete_pharmacy, create_medication, update_medication, delete_medication
 
 urlpatterns =[
     path('', home, name='home'),
@@ -15,4 +15,7 @@ urlpatterns =[
     path('pharmacy/create', create_pharmacy, name='create_pharmacy'),
     path('pharmacy/<int:id>/delete', delete_pharmacy, name='delete_pharmacy'),
     path('pharmacy/<int:id>/update', update_pharmacy, name='update_pharmacy'),
+    path('medication/create', create_medication, name='create_medication'),
+    path('medication/<int:id>/delete', delete_medication, name='delete_medication'),
+    path('medication/<int:id>/update', update_medication, name='update_medication'),
 ]
