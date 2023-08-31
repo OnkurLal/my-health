@@ -47,7 +47,7 @@ class MedicationAdmin(admin.ModelAdmin):
         'name',
         'strength',
         'directions',
-        'used_for',
+        'condition_used_for',
         'pharmacy',
         'patient',
     ]

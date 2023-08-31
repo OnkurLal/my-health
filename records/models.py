@@ -64,7 +64,7 @@ class Medication(models.Model):
         related_name='medications',
         on_delete=models.CASCADE,
     )
-    used_for = models.ForeignKey(
+    condition_used_for = models.ForeignKey(
         Disease,
         related_name='medications',
         on_delete=models.CASCADE,
