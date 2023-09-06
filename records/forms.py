@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from records.models import PersonalDetail, Medication
+from records.models import PersonalDetail
 
 class PersonalDetailForm(ModelForm):
     class Meta:
@@ -9,16 +9,4 @@ class PersonalDetailForm(ModelForm):
             'weight',
             'blood_pressure',
             'cholesterol',
-        )
-
-class MedicationForm(ModelForm):
-    class Meta:
-        model = Medication
-        fields = (
-            'name',
-            'strength',
-            'directions',
-            'doctor',
-            'condition_used_for',
-            'pharmacy',
         )

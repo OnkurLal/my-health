@@ -103,13 +103,14 @@
             <th>Prescriber</th>
             <th>Condition Used For</th>
             <th>Pharmacy</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {% for medication in user.medications.all %}
           <tr>
             <td>
-              <a href="{% url 'update_medication' medication.id %}"
+              <a href="{% url 'med_info' medication.id %}"
                 >{{ medication.name }}</a
               >
             </td>
@@ -118,6 +119,11 @@
             <td>{{ medication.doctor }}</td>
             <td>{{ medication.condition_used_for }}</td>
             <td>{{ medication.pharmacy }}</td>
+            <td>
+              <a href="{% url 'update_medication' medication.id %}"
+                >Edit Medication</a
+              >
+            </td>
           </tr>
           {% endfor %}
         </tbody>

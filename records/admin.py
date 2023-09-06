@@ -1,5 +1,5 @@
 from django.contrib import admin
-from records.models import PersonalDetail, Medication
+from records.models import PersonalDetail
 
 # Register your models here.
 @admin.register(PersonalDetail)
@@ -9,15 +9,4 @@ class PersonalDetailAdmin(admin.ModelAdmin):
         'weight',
         'blood_pressure',
         'cholesterol',
-    ]
-
-@admin.register(Medication)
-class MedicationAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'strength',
-        'directions',
-        'condition_used_for',
-        'pharmacy',
-        'patient',
     ]

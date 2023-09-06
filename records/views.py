@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from records.models import PersonalDetail, Medication
+from records.models import PersonalDetail
 from django.contrib.auth.decorators import login_required
-from records.forms import PersonalDetailForm, MedicationForm
-import requests
+from records.forms import PersonalDetailForm
 
 # Create your views here.
 def home(request):
@@ -42,57 +41,3 @@ def update_details(request, id):
         'form': form,
     }
     return render(request, 'details/update.html', context)
-
-@login_required
-def create_medication(request):
-    if request.method == 'POST':
-        form = MedicationForm(request.POST)
-        if form.is_valid():
-            medication = form.save(False)
-            medication.patient = request.user
-            medication.save()
-            return redirect('my_record')
-    else:
-        form = MedicationForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'medication/create.html', context)
-
-@login_required
-def update_medication(request, id):
-    medication = get_object_or_404(Medication, id=id)
-    if request.method == 'POST':
-        form = MedicationForm(request.POST, instance=medication)
-        if form.is_valid():
-            form.save()
-            return redirect('my_record')
-    else:
-        form = MedicationForm(instance=medication)
-    context = {
-        'form': form,
-        'medication': medication,
-    }
-    return render(request, 'medication/update.html', context)
-
-def delete_medication(request, id):
-    medication = get_object_or_404(Medication, id=id)
-    if request.method == 'POST':
-        medication.delete()
-        return redirect('my_record')
-    context = {
-        'medication': medication,
-    }
-    return render(request, 'medication/delete.html',context)
-
-def med_info(request,id):
-    medication = get_object_or_404(Medication, id=id)
-    response = requests.get(f'https://api.fda.gov/drug/label.json?search=description:{medication.name}')
-    response_data = response.json()
-    print(response_data['results'][0])
-    data = response_data['results'][0]
-    context = {
-        'medication': medication,
-        'data': data
-    }
-    return render(request, 'medication/med_info.html',context)
