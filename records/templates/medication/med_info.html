@@ -1,0 +1,12 @@
+<!-- prettier-ignore -->
+{% extends 'base.html' %} {% block title %} My Health - Add Medication {% endblock title %} {% block content %}
+{% block nav %}
+{% endblock nav%}
+<main>
+  <div class="record-section">
+    <h1>{{ medication.name }}'s Information</h1>
+    <h2>Indications and usage</h2>
+    <p>{{ data.indications_and_usage.0 }}</p>
+  </div>
+</main>
+{% endblock content %}

@@ -25,4 +25,7 @@ urlpatterns = [
     path('records/', include('records.urls')),
     path('accounts/', include('accounts.urls')),
     path('', redirect_to_home, name='home_page'),
+    path('diseases/', include('diseases.urls')),
+    path('doctors/', include('doctors.urls')),
+    path('pharmacies/', include('pharmacies.urls')),
 ]

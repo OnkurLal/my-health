@@ -2,15 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 
 /* Reset some default styles */
-body,
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  padding: 0;
-  text-decoration: none; /* Remove default underlines */
-}
 
 /* Main content styles */
 
@@ -106,41 +97,5 @@ footer {
   background-color: #34495e; /* Dark blue shade for footer */
   color: #f2f2f2;
   text-align: center;
-  padding: 20px 0;
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  /* Adjust header navigation for smaller screens */
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav a {
-    margin: 10px 0;
-  }
-
-  /* Update record-section padding */
-  .record-section {
-    padding: 15px;
-  }
-
-  /* Decrease h2 font size for smaller screens */
-  .record-section h2 {
-    font-size: 20px;
-  }
-
-  /* Update record-table styles for smaller screens */
-  .record-table th,
-  .record-table td {
-    padding: 8px;
-  }
-}
-
-@media (max-width: 576px) {
-  /* Decrease h2 font size for even smaller screens */
-  .record-section h2 {
-    font-size: 18px;
-  }
+  padding: 1.5rem 0;
 }
