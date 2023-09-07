@@ -1,7 +1,5 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %} {% block title %} My Health Record {% endblock title %} {% block content %}
-{% block nav %}
-{% endblock nav%}
 <main>
   <div>
     <h1>{{ user.first_name }}'s Record</h1>
@@ -120,9 +118,7 @@
             <td>{{ medication.condition_used_for }}</td>
             <td>{{ medication.pharmacy }}</td>
             <td>
-              <a
-                style="text-align: left"
-                href="{% url 'update_medication' medication.id %}"
+              <a href="{% url 'update_medication' medication.id %}"
                 >Edit Medication</a
               >
             </td>

@@ -1,11 +1,11 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %} {% block title %} My Health - Update Pharmacy {% endblock title %} {% block content %}
-{% block nav %}
-<a href="{% url 'delete_pharmacy' pharmacy.id %}"> Delete Pharamacy </a>
-{% endblock nav%}
 <main>
+  <p class="delete">
+    <a href="{% url 'delete_pharmacy' pharmacy.id %}"> Delete Pharamacy </a>
+  </p>
   <div class="record-section">
-    <h1>Update Pharmacy Information</h1>
+    <h2>Update Pharmacy Information</h2>
     <div class="forms">
       <form method="post">
         {% csrf_token %} {{ form.as_p }}

@@ -1,10 +1,8 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %} {% block title %} My Health - Add Pharmacy {% endblock title %} {% block content %}
-{% block nav %}
-{% endblock nav%}
 <main>
   <div class="record-section">
-    <h1>Add Pharmacy</h1>
+    <h2>Add Pharmacy</h2>
     <div class="forms">
       <form method="post">
         {% csrf_token %} {{ form.as_p }}

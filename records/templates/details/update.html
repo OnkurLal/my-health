@@ -2,7 +2,7 @@
 {% extends 'base.html' %} {% block title %} My Health - Edit Details {% endblock title %} {% block content %}
 <main>
   <div class="record-section">
-    <h1>Edit Personal Details</h1>
+    <h2>Edit Personal Details</h2>
     <div class="forms">
       <form method="post">
         {% csrf_token %} {{ form.as_p }}
