@@ -5,10 +5,14 @@
 <main>
   <div class="record-section">
     <h1>Add Doctor</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button>Add</button>
-    </form>
+    <div class="forms">
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="button">
+          <button>Add</button>
+        </div>
+      </form>
+    </div>
   </div>
 </main>
 {% endblock content %}

@@ -2,11 +2,15 @@
 {% extends 'base.html' %} {% block title %} My Health - Login {% endblock title %} {% block content %}
 <main>
   <div class="record-section">
-    <h1>Login to your Health Record</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button>Login</button>
-    </form>
+    <h1>Login To Your Health Record</h1>
+    <div class="forms">
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="button">
+          <button>Login</button>
+        </div>
+      </form>
+    </div>
   </div>
 </main>
 {% endblock content %}

@@ -1,75 +1,88 @@
-/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
 
-/* Reset some default styles */
-
-/* Main content styles */
-
-/* Reset box-sizing to ensure consistent layout */
 * {
   box-sizing: border-box;
 }
 
-/* Body styles */
 body {
-  background-color: #f2f2f2; /* Light gray background */
+  background-color: #f2f2f2;
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
-  color: #333; /* Dark gray text color */
+  color: #333;
+  font-size: 1rem;
+  margin: 0;
 }
-
-/* Header styles */
-
-/* Center the header and navigation */
+h1 {
+  text-align: center;
+}
 header {
   text-align: center;
-  padding: 20px 0;
-  background-color: #2c3e50; /* Dark blue shade for header */
+  padding: 1.25rem 0;
+  background-color: #2c3e50;
 }
 
-/* Update the navigation link styles */
 nav {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 a {
-  color: #3498db; /* Different color for links (blue shade) */
+  color: #3498db;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 0.9375rem;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #2980b9; /* Slightly darker blue shade on hover */
+  color: #2980b9;
 }
 
-/* Prevent link color change after being clicked */
 a:visited {
   color: #3498db;
 }
 
-/* Main content styles */
+/* Add this CSS code to your existing CSS file */
+nav a {
+  color: #f2f2f2; /* Light gray color for nav links */
+  text-decoration: none;
+  margin: 0 0.9375rem;
+  transition: color 0.3s ease;
+}
 
-/* Update the record-section styles */
+nav a:hover {
+  color: #2980b9; /* Slightly different shade on hover */
+}
+
+nav a:visited {
+  color: #f2f2f2; /* Maintain the light gray color for visited links */
+}
+
 .record-section {
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  margin: 25px auto;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  max-width: 56.25rem;
+  margin: 1.5625rem auto;
 }
 
-/* Update h2 styles */
+.forms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  display: flex;
+  justify-content: center;
+}
 .record-section h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
   color: #333;
+  text-align: center;
 }
 
-/* Update record-table styles */
 .record-table {
   width: 100%;
   border-collapse: collapse;
@@ -77,13 +90,13 @@ a:visited {
 
 .record-table th,
 .record-table td {
-  padding: 12px;
-  border: 1px solid #ddd;
-  text-align: left;
+  padding: 0.75rem;
+  border: 0.0625rem solid #ddd;
+  text-align: center;
 }
 
 .record-table th {
-  background-color: #f5f5f5; /* Light gray shade */
+  background-color: #f5f5f5;
   color: #333;
 }
 
@@ -92,10 +105,9 @@ a:visited {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Footer styles */
 footer {
-  background-color: #34495e; /* Dark blue shade for footer */
+  background-color: #34495e;
   color: #f2f2f2;
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 0.9375rem 0;
 }

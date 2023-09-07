@@ -6,10 +6,14 @@
 <main>
   <div class="record-section">
     <h1>Edit Disease/Condition</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button>Edit</button>
-    </form>
+    <div class="forms">
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="button">
+          <button>Update</button>
+        </div>
+      </form>
+    </div>
   </div>
 </main>
 {% endblock content %}

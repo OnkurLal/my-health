@@ -3,10 +3,14 @@
 <main>
   <div class="record-section">
     <h1>Signup to keep track of your health record</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button>Sign Up</button>
-    </form>
+    <div class="forms">
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="button">
+          <button>Sign Up</button>
+        </div>
+      </form>
+    </div>
   </div>
 </main>
 {% endblock content %}
