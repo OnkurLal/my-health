@@ -9,6 +9,7 @@ from medications.views import (
     med_contraindications,
     med_boxed_warning,
     med_side_effects,
+    drug_drug_interactions
 )
 
 
@@ -28,4 +29,7 @@ urlpatterns = [
         "<int:id>/med_info/boxed_warning/", med_boxed_warning, name="med_boxed_warning"
     ),
     path("<int:id>/med_info/side_effects/", med_side_effects, name="med_side_effects"),
+    path(
+        "med_info/drug_drug_interactions/", drug_drug_interactions, name="drug_drug_interactions"
+    ),
 ]

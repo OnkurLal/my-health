@@ -9,6 +9,7 @@ class Pharmacy(models.Model):
     street_address = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2)
+    zip_code = models.CharField(max_length=5, null=True)
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="pharmacies",

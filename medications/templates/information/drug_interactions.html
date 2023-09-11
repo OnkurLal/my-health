@@ -1,0 +1,17 @@
+<!-- prettier-ignore -->
+{% extends 'base.html' %}
+{% block title %}
+    My Health - Current Drug-Drug Interactions
+{% endblock title %}
+{% block content %}
+<main>
+  <div class="record-section">
+    <h2>Your Current Drug-Drug Interactions</h2>
+    {% if errors %} {% for error in errors %}
+    <p>{{ error }}</p>
+    {% endfor %} {% else %} {% for interaction in interactions %}
+    <p>{{ interaction.interactionPair.0.description }}</p>
+    {% endfor %} {% endif %}
+  </div>
+</main>
+{% endblock content %}

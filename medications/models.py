@@ -33,4 +33,4 @@ class Medication(models.Model):
     )
 
     def __str__(self):
-        return self.nme
+        return self.name

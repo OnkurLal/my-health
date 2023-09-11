@@ -70,7 +70,7 @@ def med_indications(request, id):
         response_data = response.json()
         indication = response_data["results"][0]["indications_and_usage"][0]
     except KeyError:
-        indication = "Please make sure the drug name is spelled correctly or this data might not be available."
+        indication = f"Please make sure {medication} is spelled correctly or this data might not be available."
 
     context = {"medication": medication, "indication": indication}
     return render(request, "information/indication.html", context)
@@ -85,7 +85,7 @@ def med_dosages(request, id):
         response_data = response.json()
         dosage = response_data["results"][0]["dosage_and_administration"][0]
     except KeyError:
-        dosage = "Please make sure the drug name is spelled correctly or this data might not be available."
+        dosage = f"Please make sure {medication} is spelled correctly or this data might not be available."
 
     context = {
         "medication": medication,
@@ -103,7 +103,7 @@ def med_contraindications(request, id):
         response_data = response.json()
         contraindications = response_data["results"][0]["contraindications"][0]
     except KeyError:
-        contraindications = "Please make sure the drug name is spelled correctly or this data might not be available."
+        contraindications = f"Please make sure {medication} is spelled correctly or this data might not be available."
 
     context = {
         "medication": medication,
@@ -121,7 +121,7 @@ def med_boxed_warning(request, id):
         response_data = response.json()
         boxed_warning = response_data["results"][0]["boxed_warning"][0]
     except KeyError:
-        boxed_warning = "Please make sure the drug name is spelled correctly or this data might not be available."
+        boxed_warning = f"Please make sure {medication} is spelled correctly or this data might not be available."
 
     context = {
         "medication": medication,
@@ -139,10 +139,38 @@ def med_side_effects(request, id):
         response_data = response.json()
         side_effects = response_data["results"][0]["adverse_reactions"][0]
     except KeyError:
-        side_effects = "Please make sure the drug name is spelled correctly or this data might not be available."
+        side_effects = f"Please make sure {medication} is spelled correctly or this data might not be available."
 
     context = {
         "medication": medication,
         "side_effects": side_effects,
     }
     return render(request, "information/side_effects.html", context)
+
+
+@login_required
+def drug_drug_interactions(request):
+    medications = request.user.medications.all()
+    med_rxnorm_ids = []
+    errors = []
+    interactions = 'You currently do not have any drug-drug interactions on your profile.'
+    for med in medications:
+        try:
+            response = requests.get(f'https://rxnav.nlm.nih.gov/REST/rxcui.json?name={med}&search=1')
+            response_data = response.json()
+            med_rxnorm_ids.append(response_data['idGroup']['rxnormId'][0])
+        except KeyError:
+            errors.append(f'Please make sure {med} is spelled correctly.')
+
+    try:
+        response = requests.get(f'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={"+".join(med_rxnorm_ids)}')
+        response_data = response.json()
+        interactions = response_data['fullInteractionTypeGroup'][0]['fullInteractionType']
+    except:
+        pass
+
+    context = {
+        "interactions" : interactions,
+        "errors" : errors,
+    }
+    return render(request, "information/drug_interactions.html", context)

@@ -1,29 +1,40 @@
 <!-- prettier-ignore -->
 {% extends 'base.html' %}
 {% block title %}
-    My Health - Add Medication
+    My Health - {{ medication.name }}'s Information
 {% endblock title %}
 {% block content %}
-    <main>
-        <div class="record-section">
-            <h1>{{ medication.name }}'s Information</h1>
-            <div class="record-grid">
-                <p>
-                    <a href="{% url 'med_indications' medication.id %}">Indications and & Usage</a>
-                </p>
-                <p>
-                    <a href="{% url 'med_dosages' medication.id %}">Dosage and Administration</a>
-                </p>
-                <p>
-                    <a href="{% url 'med_contraindications' medication.id %}">Contraindications</a>
-                </p>
-                <p>
-                    <a href="{% url 'med_boxed_warning' medication.id %}">Boxed Warning</a>
-                </p>
-                <p>
-                    <a href="{% url 'med_side_effects' medication.id %}">Side Effects</a>
-                </p>
-            </div>
-        </div>
-    </main>
+<main>
+  <div class="record-section">
+    <h2>{{ medication.name }}'s Information</h2>
+    <div class="record-grid">
+      <p>
+        <a href="{% url 'med_indications' medication.id %}"
+          >Indications and & Usage</a
+        >
+      </p>
+      <p>
+        <a href="{% url 'med_dosages' medication.id %}"
+          >Dosage and Administration</a
+        >
+      </p>
+      <p>
+        <a href="{% url 'med_contraindications' medication.id %}"
+          >Contraindications</a
+        >
+      </p>
+      <p>
+        <a href="{% url 'med_boxed_warning' medication.id %}">Boxed Warning</a>
+      </p>
+      <p>
+        <a href="{% url 'med_side_effects' medication.id %}">Side Effects</a>
+      </p>
+      <p>
+        <a href="{% url 'drug_drug_interactions' %}"
+          >Current Drug-Drug Interactions</a
+        >
+      </p>
+    </div>
+  </div>
+</main>
 {% endblock content %}

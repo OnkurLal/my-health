@@ -11,5 +11,6 @@ class DoctorForm(ModelForm):
             "street_address",
             "city",
             "state",
+            "zip_code",
             "specialty",
         )

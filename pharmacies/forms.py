@@ -11,4 +11,5 @@ class PharmacyForm(ModelForm):
             "street_address",
             "city",
             "state",
+            "zip_code",
         )
