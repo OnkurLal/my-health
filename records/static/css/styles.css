@@ -78,8 +78,9 @@ nav a:hover {
 
 .forms {
   display: flex;
+  text-align: left;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 .button {
   display: flex;
@@ -154,4 +155,8 @@ td a {
 }
 .home ul li {
   margin-bottom: 0.5rem;
+}
+
+p label {
+  display: flex;
 }

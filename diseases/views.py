@@ -21,6 +21,7 @@ def create_disease(request):
     }
     return render(request, 'diseases/create.html', context)
 
+
 @login_required
 def update_disease(request, id):
     disease = get_object_or_404(Disease, id=id)
@@ -37,6 +38,7 @@ def update_disease(request, id):
     }
     return render(request, 'diseases/update.html', context)
 
+
 def delete_disease(request, id):
     disease = get_object_or_404(Disease, id=id)
     if request.method == 'POST':
@@ -45,4 +47,4 @@ def delete_disease(request, id):
     context = {
         'disease': disease,
     }
-    return render(request, 'diseases/delete.html',context)
+    return render(request, 'diseases/delete.html', context)

@@ -3,6 +3,7 @@ from django.conf import settings
 
 # Create your models here.
 
+
 class PersonalDetail(models.Model):
     height = models.CharField(max_length=20)
     weight = models.PositiveSmallIntegerField()

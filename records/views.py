@@ -4,12 +4,16 @@ from django.contrib.auth.decorators import login_required
 from records.forms import PersonalDetailForm
 
 # Create your views here.
+
+
 def home(request):
     return render(request, 'records/home.html')
+
 
 @login_required
 def my_record(request):
     return render(request, 'records/my_record.html',)
+
 
 @login_required
 def create_details(request):
@@ -26,6 +30,7 @@ def create_details(request):
         'form': form,
     }
     return render(request, 'details/create.html', context)
+
 
 @login_required
 def update_details(request, id):

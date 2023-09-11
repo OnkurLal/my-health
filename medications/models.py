@@ -6,6 +6,7 @@ from pharmacies.models import Pharmacy
 
 # Create your models here.
 
+
 class Medication(models.Model):
     name = models.CharField(max_length=100)
     strength = models.CharField(max_length=20)
@@ -31,5 +32,5 @@ class Medication(models.Model):
         on_delete=models.CASCADE,
     )
 
-def __str__(self):
-    return self.nme
+    def __str__(self):
+        return self.nme

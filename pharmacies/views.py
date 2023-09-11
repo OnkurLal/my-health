@@ -4,6 +4,8 @@ from pharmacies.models import Pharmacy
 from pharmacies.forms import PharmacyForm
 
 # Create your views here.
+
+
 @login_required
 def create_pharmacy(request):
     if request.method == 'POST':
@@ -19,6 +21,7 @@ def create_pharmacy(request):
         'form': form,
     }
     return render(request, 'pharmacy/create.html', context)
+
 
 @login_required
 def update_pharmacy(request, id):
@@ -36,6 +39,7 @@ def update_pharmacy(request, id):
     }
     return render(request, 'pharmacy/update.html', context)
 
+
 def delete_pharmacy(request, id):
     pharmacy = get_object_or_404(Pharmacy, id=id)
     if request.method == 'POST':
@@ -44,4 +48,4 @@ def delete_pharmacy(request, id):
     context = {
         'pharmacy': pharmacy,
     }
-    return render(request, 'pharmacy/delete.html',context)
+    return render(request, 'pharmacy/delete.html', context)

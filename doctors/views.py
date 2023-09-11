@@ -4,6 +4,8 @@ from doctors.models import Doctor
 from doctors.forms import DoctorForm
 
 # Create your views here.
+
+
 @login_required
 def create_doctor(request):
     if request.method == 'POST':
@@ -19,6 +21,7 @@ def create_doctor(request):
         'form': form,
     }
     return render(request, 'doctors/create.html', context)
+
 
 @login_required
 def update_doctor(request, id):
@@ -36,6 +39,7 @@ def update_doctor(request, id):
     }
     return render(request, 'doctors/update.html', context)
 
+
 def delete_doctor(request, id):
     doctor = get_object_or_404(Doctor, id=id)
     if request.method == 'POST':
@@ -44,4 +48,4 @@ def delete_doctor(request, id):
     context = {
         'doctor': doctor,
     }
-    return render(request, 'doctors/delete.html',context)
+    return render(request, 'doctors/delete.html', context)

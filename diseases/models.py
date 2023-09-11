@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 
 # Create your models here.
+
+
 class Disease(models.Model):
     name = models.CharField(max_length=100)
     patient = models.ForeignKey(

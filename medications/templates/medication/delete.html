@@ -4,8 +4,8 @@
 <main>
   <div class="record-section">
     <h2>Are you sure you want to delete {{ medication.name }}?</h2>
-    <div class="forms">
-      <form method="post">
+    <div>
+      <form method="post" class="forms">
         {% csrf_token %} {{ form.as_p }}
         <div class="button">
           <button>Delete</button>

@@ -6,8 +6,8 @@
   </p>
   <div class="record-section">
     <h2>Edit Disease/Condition</h2>
-    <div class="forms">
-      <form method="post">
+    <div>
+      <form method="post" class="forms">
         {% csrf_token %} {{ form.as_p }}
         <div class="button">
           <button>Update</button>
