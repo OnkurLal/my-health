@@ -4,14 +4,21 @@
     My Health - Current Drug-Drug Interactions
 {% endblock title %}
 {% block content %}
-<main>
-  <div class="record-section">
-    <h2>Your Current Drug-Drug Interactions</h2>
-    {% if errors %} {% for error in errors %}
-    <p>{{ error }}</p>
-    {% endfor %} {% else %} {% for interaction in interactions %}
-    <p>{{ interaction.interactionPair.0.description }}</p>
-    {% endfor %} {% endif %}
-  </div>
-</main>
+    <main>
+        <div class="record-section">
+            <h2>Your Current Drug-Drug Interactions</h2>
+            {% if errors %}
+                {% for error in errors %}<p>{{ error }}</p>{% endfor %}
+            {% else %}
+                {% for interaction in interactions %}
+                    <!-- prettier-ignore -->
+                    {% if interaction.interactionPair.0.description %}
+                        <p>{{ interaction.interactionPair.0.description }}</p>
+                    {% else %}
+                        <p>{{ interaction }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </main>
 {% endblock content %}

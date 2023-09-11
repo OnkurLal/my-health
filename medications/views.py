@@ -153,24 +153,32 @@ def drug_drug_interactions(request):
     medications = request.user.medications.all()
     med_rxnorm_ids = []
     errors = []
-    interactions = 'You currently do not have any drug-drug interactions on your profile.'
+    interactions = []
     for med in medications:
         try:
-            response = requests.get(f'https://rxnav.nlm.nih.gov/REST/rxcui.json?name={med}&search=1')
+            response = requests.get(
+                f"https://rxnav.nlm.nih.gov/REST/rxcui.json?name={med}&search=1"
+            )
             response_data = response.json()
-            med_rxnorm_ids.append(response_data['idGroup']['rxnormId'][0])
+            med_rxnorm_ids.append(response_data["idGroup"]["rxnormId"][0])
         except KeyError:
-            errors.append(f'Please make sure {med} is spelled correctly.')
+            errors.append(f"Please make sure {med} is spelled correctly.")
 
     try:
-        response = requests.get(f'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={"+".join(med_rxnorm_ids)}')
+        response = requests.get(
+            f'https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis={"+".join(med_rxnorm_ids)}'
+        )
         response_data = response.json()
-        interactions = response_data['fullInteractionTypeGroup'][0]['fullInteractionType']
+        interactions = response_data["fullInteractionTypeGroup"][0][
+            "fullInteractionType"
+        ]
     except:
-        pass
+        interactions.append(
+            "You currently do not have any drug-drug interactions with medications. "
+        )
 
     context = {
-        "interactions" : interactions,
-        "errors" : errors,
+        "interactions": interactions,
+        "errors": errors,
     }
     return render(request, "information/drug_interactions.html", context)

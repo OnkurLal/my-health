@@ -4,20 +4,20 @@
     My Health - Edit Medicaiton
 {% endblock title %}
 {% block content %}
-<main>
-  <p class="delete">
-    <a href="{% url 'delete_medication' medication.id %}">Delete Medication</a>
-  </p>
-  <div class="record-section">
-    <h2>Update Medication Information</h2>
-    <div>
-      <form method="post" class="forms">
-        {% csrf_token %} {{ form.as_p }}
-        <div class="button">
-          <button>Update</button>
+    <main>
+        <p class="delete">
+            <a href="{% url 'delete_medication' medication.id %}">Delete Medication</a>
+        </p>
+        <div class="record-section">
+            <h2>Update Medication Information</h2>
+            <div>
+                <form method="post" class="forms">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="button">
+                        <button>Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
-</main>
+    </main>
 {% endblock content %}
