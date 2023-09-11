@@ -11,6 +11,6 @@ class PersonalDetail(models.Model):
     cholesterol = models.PositiveSmallIntegerField()
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='details',
+        related_name="details",
         on_delete=models.CASCADE,
     )

@@ -1,16 +1,20 @@
 <!-- prettier-ignore -->
-{% extends 'base.html' %} {% block title %} My Health - Add Doctor {% endblock title %} {% block content %}
-<main>
-  <div class="record-section">
-    <h2>Add Doctor</h2>
-    <div>
-      <form method="post" class="forms">
-        {% csrf_token %} {{ form.as_p }}
-        <div class="button">
-          <button>Add</button>
+{% extends 'base.html' %}
+{% block title %}
+    My Health - Add Doctor
+{% endblock title %}
+{% block content %}
+    <main>
+        <div class="record-section">
+            <h2>Add Doctor</h2>
+            <div>
+                <form method="post" class="forms">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="button">
+                        <button>Add</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
-</main>
+    </main>
 {% endblock content %}

@@ -8,44 +8,44 @@ from pharmacies.forms import PharmacyForm
 
 @login_required
 def create_pharmacy(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = PharmacyForm(request.POST)
         if form.is_valid():
             pharmacy = form.save(False)
             pharmacy.patient = request.user
             pharmacy.save()
-            return redirect('my_record')
+            return redirect("my_record")
     else:
         form = PharmacyForm()
     context = {
-        'form': form,
+        "form": form,
     }
-    return render(request, 'pharmacy/create.html', context)
+    return render(request, "pharmacy/create.html", context)
 
 
 @login_required
 def update_pharmacy(request, id):
     pharmacy = get_object_or_404(Pharmacy, id=id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = PharmacyForm(request.POST, instance=pharmacy)
         if form.is_valid():
             form.save()
-            return redirect('my_record')
+            return redirect("my_record")
     else:
         form = PharmacyForm(instance=pharmacy)
     context = {
-        'form': form,
-        'pharmacy': pharmacy,
+        "form": form,
+        "pharmacy": pharmacy,
     }
-    return render(request, 'pharmacy/update.html', context)
+    return render(request, "pharmacy/update.html", context)
 
 
 def delete_pharmacy(request, id):
     pharmacy = get_object_or_404(Pharmacy, id=id)
-    if request.method == 'POST':
+    if request.method == "POST":
         pharmacy.delete()
-        return redirect('my_record')
+        return redirect("my_record")
     context = {
-        'pharmacy': pharmacy,
+        "pharmacy": pharmacy,
     }
-    return render(request, 'pharmacy/delete.html', context)
+    return render(request, "pharmacy/delete.html", context)

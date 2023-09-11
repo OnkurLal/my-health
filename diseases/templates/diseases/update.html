@@ -1,19 +1,23 @@
 <!-- prettier-ignore -->
-{% extends 'base.html' %} {% block title %} My Health - Edit Disease {% endblock title %} {% block content %}
-<main>
-  <p class="delete">
-    <a href="{% url 'delete_disease' disease.id %}">Delete Disease</a>
-  </p>
-  <div class="record-section">
-    <h2>Edit Disease/Condition</h2>
-    <div>
-      <form method="post" class="forms">
-        {% csrf_token %} {{ form.as_p }}
-        <div class="button">
-          <button>Update</button>
+{% extends 'base.html' %}
+{% block title %}
+    My Health - Edit Disease
+{% endblock title %}
+{% block content %}
+    <main>
+        <p class="delete">
+            <a href="{% url 'delete_disease' disease.id %}">Delete Disease</a>
+        </p>
+        <div class="record-section">
+            <h2>Edit Disease/Condition</h2>
+            <div>
+                <form method="post" class="forms">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="button">
+                        <button>Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
-</main>
+    </main>
 {% endblock content %}

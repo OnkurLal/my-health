@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,59 +14,155 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Disease',
+            name="Disease",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='diseases', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="diseases",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Doctor',
+            name="Doctor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('phone_number', models.CharField(max_length=15)),
-                ('street_address', models.CharField(max_length=50)),
-                ('city', models.CharField(max_length=50)),
-                ('state', models.CharField(max_length=2)),
-                ('specialty', models.CharField(max_length=100)),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='doctors', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("phone_number", models.CharField(max_length=15)),
+                ("street_address", models.CharField(max_length=50)),
+                ("city", models.CharField(max_length=50)),
+                ("state", models.CharField(max_length=2)),
+                ("specialty", models.CharField(max_length=100)),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="doctors",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Pharmacy',
+            name="Pharmacy",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('phone_number', models.CharField(max_length=15)),
-                ('street_address', models.CharField(max_length=50)),
-                ('city', models.CharField(max_length=50)),
-                ('state', models.CharField(max_length=2)),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pharmacies', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                ("phone_number", models.CharField(max_length=15)),
+                ("street_address", models.CharField(max_length=50)),
+                ("city", models.CharField(max_length=50)),
+                ("state", models.CharField(max_length=2)),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="pharmacies",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='PersonalDetail',
+            name="PersonalDetail",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('height', models.CharField(max_length=20)),
-                ('weight', models.PositiveSmallIntegerField()),
-                ('blood_pressure', models.CharField(max_length=10)),
-                ('cholesterol', models.PositiveSmallIntegerField()),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='details', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("height", models.CharField(max_length=20)),
+                ("weight", models.PositiveSmallIntegerField()),
+                ("blood_pressure", models.CharField(max_length=10)),
+                ("cholesterol", models.PositiveSmallIntegerField()),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="details",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Medication',
+            name="Medication",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('strength', models.CharField(max_length=20)),
-                ('directions', models.TextField()),
-                ('doctor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='records.doctor')),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to=settings.AUTH_USER_MODEL)),
-                ('pharmacy', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='records.pharmacy')),
-                ('used_for', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='records.disease')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("strength", models.CharField(max_length=20)),
+                ("directions", models.TextField()),
+                (
+                    "doctor",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="medications",
+                        to="records.doctor",
+                    ),
+                ),
+                (
+                    "patient",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="medications",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "pharmacy",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="medications",
+                        to="records.pharmacy",
+                    ),
+                ),
+                (
+                    "used_for",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="medications",
+                        to="records.disease",
+                    ),
+                ),
             ],
         ),
     ]

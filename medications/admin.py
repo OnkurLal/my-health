@@ -7,10 +7,10 @@ from medications.models import Medication
 @admin.register(Medication)
 class MedicationAdmin(admin.ModelAdmin):
     list_display = [
-        'name',
-        'strength',
-        'directions',
-        'condition_used_for',
-        'pharmacy',
-        'patient',
+        "name",
+        "strength",
+        "directions",
+        "condition_used_for",
+        "pharmacy",
+        "patient",
     ]

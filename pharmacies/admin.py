@@ -7,10 +7,10 @@ from pharmacies.models import Pharmacy
 @admin.register(Pharmacy)
 class PharmacyAdmin(admin.ModelAdmin):
     list_display = [
-        'name',
-        'phone_number',
-        'street_address',
-        'city',
-        'state',
-        'patient',
+        "name",
+        "phone_number",
+        "street_address",
+        "city",
+        "state",
+        "patient",
     ]

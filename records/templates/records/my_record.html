@@ -1,5 +1,9 @@
 <!-- prettier-ignore -->
-{% extends 'base.html' %} {% block title %} My Health Record {% endblock title %} {% block content %}
+{% extends 'base.html' %}
+{% block title %}
+    My Health Record
+{% endblock title %}
+{% block content %}
 <main>
   <div>
     <h1>{{ user.first_name }}'s Record</h1>
@@ -10,8 +14,8 @@
           <tr>
             <th>Height</th>
             <th>Weight (lbs.)</th>
-            <th>Blood Pressure</th>
-            <th>Cholesterol</th>
+            <th>Blood Pressure (mmHg)</th>
+            <th>Total Cholesterol (mg/dL)</th>
           </tr>
         </thead>
         <tbody>
@@ -24,9 +28,9 @@
         </tbody>
       </table>
       <p>
-        <a href="{% url 'update_details' user.details.all.0.id %}">
-          Edit Personal Details
-        </a>
+        <a href="{% url 'update_details' user.details.all.0.id %}"
+          >Edit Personal Details</a
+        >
       </p>
     </div>
     <div class="record-section">
@@ -38,7 +42,9 @@
         </p>
         {% endfor %}
       </div>
-      <p><a href="{% url 'create_disease' %}">Add Disease/Condition</a></p>
+      <p>
+        <a href="{% url 'create_disease' %}">Add Disease/Condition</a>
+      </p>
     </div>
     <div class="record-section">
       <h2>Doctors</h2>
@@ -54,9 +60,9 @@
           {% for doctor in user.doctors.all %}
           <tr>
             <td>
-              <a href="{% url 'update_doctor' doctor.id %}">
-                {{ doctor.name }}
-              </a>
+              <a href="{% url 'update_doctor' doctor.id %}"
+                >{{ doctor.name }}</a
+              >
             </td>
             <td>{{ doctor.phone_number }}</td>
             <td>{{ doctor.specialty }}</td>
@@ -64,7 +70,9 @@
           {% endfor %}
         </tbody>
       </table>
-      <p><a href="{% url 'create_doctor' %}">Add Doctor</a></p>
+      <p>
+        <a href="{% url 'create_doctor' %}">Add Doctor</a>
+      </p>
     </div>
     <div class="record-section">
       <h2>Pharmacies</h2>
@@ -79,16 +87,18 @@
           {% for pharmacy in user.pharmacies.all %}
           <tr>
             <td>
-              <a href="{% url 'update_pharmacy' pharmacy.id %}">
-                {{ pharmacy.name }}
-              </a>
+              <a href="{% url 'update_pharmacy' pharmacy.id %}"
+                >{{ pharmacy.name }}</a
+              >
             </td>
             <td>{{ pharmacy.phone_number }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <p><a href="{% url 'create_pharmacy' %}">Add Pharmacy</a></p>
+      <p>
+        <a href="{% url 'create_pharmacy' %}">Add Pharmacy</a>
+      </p>
     </div>
     <div class="record-section">
       <h2>Medications</h2>
@@ -126,7 +136,9 @@
           {% endfor %}
         </tbody>
       </table>
-      <p><a href="{% url 'create_medication' %}">Add Medication</a></p>
+      <p>
+        <a href="{% url 'create_medication' %}">Add Medication</a>
+      </p>
     </div>
   </div>
 </main>

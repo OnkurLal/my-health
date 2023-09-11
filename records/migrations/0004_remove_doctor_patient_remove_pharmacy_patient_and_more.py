@@ -5,45 +5,56 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('pharmacies', '0001_initial'),
-        ('doctors', '0001_initial'),
-        ('diseases', '0001_initial'),
-        ('records', '0003_rename_used_for_medication_condition_used_for'),
+        ("pharmacies", "0001_initial"),
+        ("doctors", "0001_initial"),
+        ("diseases", "0001_initial"),
+        ("records", "0003_rename_used_for_medication_condition_used_for"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='doctor',
-            name='patient',
+            model_name="doctor",
+            name="patient",
         ),
         migrations.RemoveField(
-            model_name='pharmacy',
-            name='patient',
+            model_name="pharmacy",
+            name="patient",
         ),
         migrations.AlterField(
-            model_name='medication',
-            name='condition_used_for',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='diseases.disease'),
+            model_name="medication",
+            name="condition_used_for",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="medications",
+                to="diseases.disease",
+            ),
         ),
         migrations.AlterField(
-            model_name='medication',
-            name='doctor',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='doctors.doctor'),
+            model_name="medication",
+            name="doctor",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="medications",
+                to="doctors.doctor",
+            ),
         ),
         migrations.AlterField(
-            model_name='medication',
-            name='pharmacy',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='medications', to='pharmacies.pharmacy'),
+            model_name="medication",
+            name="pharmacy",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="medications",
+                to="pharmacies.pharmacy",
+            ),
         ),
         migrations.DeleteModel(
-            name='Disease',
+            name="Disease",
         ),
         migrations.DeleteModel(
-            name='Doctor',
+            name="Doctor",
         ),
         migrations.DeleteModel(
-            name='Pharmacy',
+            name="Pharmacy",
         ),
     ]

@@ -12,7 +12,7 @@ class Doctor(models.Model):
     specialty = models.CharField(max_length=100)
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='doctors',
+        related_name="doctors",
         on_delete=models.CASCADE,
     )
 

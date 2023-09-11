@@ -7,8 +7,8 @@ from records.models import PersonalDetail
 @admin.register(PersonalDetail)
 class PersonalDetailAdmin(admin.ModelAdmin):
     list_display = [
-        'height',
-        'weight',
-        'blood_pressure',
-        'cholesterol',
+        "height",
+        "weight",
+        "blood_pressure",
+        "cholesterol",
     ]

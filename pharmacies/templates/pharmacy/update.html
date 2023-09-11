@@ -1,19 +1,23 @@
 <!-- prettier-ignore -->
-{% extends 'base.html' %} {% block title %} My Health - Update Pharmacy {% endblock title %} {% block content %}
-<main>
-  <p class="delete">
-    <a href="{% url 'delete_pharmacy' pharmacy.id %}"> Delete Pharamacy </a>
-  </p>
-  <div class="record-section">
-    <h2>Update Pharmacy Information</h2>
-    <div>
-      <form method="post" class="forms">
-        {% csrf_token %} {{ form.as_p }}
-        <div class="button">
-          <button>Update</button>
+{% extends 'base.html' %}
+{% block title %}
+    My Health - Update Pharmacy
+{% endblock title %}
+{% block content %}
+    <main>
+        <p class="delete">
+            <a href="{% url 'delete_pharmacy' pharmacy.id %}">Delete Pharamacy</a>
+        </p>
+        <div class="record-section">
+            <h2>Update Pharmacy Information</h2>
+            <div>
+                <form method="post" class="forms">
+                    {% csrf_token %} {{ form.as_p }}
+                    <div class="button">
+                        <button>Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
-</main>
+    </main>
 {% endblock content %}

@@ -6,8 +6,8 @@ class PersonalDetailForm(ModelForm):
     class Meta:
         model = PersonalDetail
         fields = (
-            'height',
-            'weight',
-            'blood_pressure',
-            'cholesterol',
+            "height",
+            "weight",
+            "blood_pressure",
+            "cholesterol",
         )

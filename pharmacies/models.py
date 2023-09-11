@@ -11,7 +11,7 @@ class Pharmacy(models.Model):
     state = models.CharField(max_length=2)
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='pharmacies',
+        related_name="pharmacies",
         on_delete=models.CASCADE,
     )
 

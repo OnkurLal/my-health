@@ -6,10 +6,10 @@ class MedicationForm(ModelForm):
     class Meta:
         model = Medication
         fields = (
-            'name',
-            'strength',
-            'directions',
-            'doctor',
-            'condition_used_for',
-            'pharmacy',
+            "name",
+            "strength",
+            "directions",
+            "doctor",
+            "condition_used_for",
+            "pharmacy",
         )

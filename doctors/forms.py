@@ -6,10 +6,10 @@ class DoctorForm(ModelForm):
     class Meta:
         model = Doctor
         fields = (
-            'name',
-            'phone_number',
-            'street_address',
-            'city',
-            'state',
-            'specialty',
+            "name",
+            "phone_number",
+            "street_address",
+            "city",
+            "state",
+            "specialty",
         )

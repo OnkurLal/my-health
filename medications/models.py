@@ -13,22 +13,22 @@ class Medication(models.Model):
     directions = models.TextField()
     doctor = models.ForeignKey(
         Doctor,
-        related_name='medications',
+        related_name="medications",
         on_delete=models.CASCADE,
     )
     condition_used_for = models.ForeignKey(
         Disease,
-        related_name='medications',
+        related_name="medications",
         on_delete=models.CASCADE,
     )
     pharmacy = models.ForeignKey(
         Pharmacy,
-        related_name='medications',
+        related_name="medications",
         on_delete=models.CASCADE,
     )
     patient = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='medications',
+        related_name="medications",
         on_delete=models.CASCADE,
     )
 
