@@ -9,24 +9,26 @@
             <h1>{{ user.first_name }}'s Record</h1>
             <div class="record-section">
                 <h2>Personal Details</h2>
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Height</th>
-                            <th>Weight (lbs.)</th>
-                            <th>Blood Pressure (mmHg)</th>
-                            <th>Total Cholesterol (mg/dL)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{ user.details.all.0.height }}</td>
-                            <td>{{ user.details.all.0.weight }}</td>
-                            <td>{{ user.details.all.0.blood_pressure }}</td>
-                            <td>{{ user.details.all.0.cholesterol }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table class="record-table">
+                        <thead>
+                            <tr>
+                                <th>Height</th>
+                                <th>Weight (lbs.)</th>
+                                <th>Blood Pressure (mmHg)</th>
+                                <th>Total Cholesterol (mg/dL)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ user.details.all.0.height }}</td>
+                                <td>{{ user.details.all.0.weight }}</td>
+                                <td>{{ user.details.all.0.blood_pressure }}</td>
+                                <td>{{ user.details.all.0.cholesterol }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p>
                     <a href="{% url 'update_details' user.details.all.0.id %}">Edit Personal Details</a>
                 </p>
@@ -46,86 +48,92 @@
             </div>
             <div class="record-section">
                 <h2>Doctors</h2>
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Phone Number</th>
-                            <th>Specialty</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for doctor in user.doctors.all %}
+                <div class="table-container">
+                    <table class="record-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a href="{% url 'update_doctor' doctor.id %}">{{ doctor.name }}</a>
-                                </td>
-                                <td>{{ doctor.phone_number }}</td>
-                                <td>{{ doctor.specialty }}</td>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Specialty</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for doctor in user.doctors.all %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'update_doctor' doctor.id %}">{{ doctor.name }}</a>
+                                    </td>
+                                    <td>{{ doctor.phone_number }}</td>
+                                    <td>{{ doctor.specialty }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
                 <p>
                     <a href="{% url 'create_doctor' %}">Add Doctor</a>
                 </p>
             </div>
             <div class="record-section">
                 <h2>Pharmacies</h2>
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Phone Number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for pharmacy in user.pharmacies.all %}
+                <div class="table-container">
+                    <table class="record-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a href="{% url 'update_pharmacy' pharmacy.id %}">{{ pharmacy.name }}</a>
-                                </td>
-                                <td>{{ pharmacy.phone_number }}</td>
+                                <th>Name</th>
+                                <th>Phone Number</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for pharmacy in user.pharmacies.all %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'update_pharmacy' pharmacy.id %}">{{ pharmacy.name }}</a>
+                                    </td>
+                                    <td>{{ pharmacy.phone_number }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
                 <p>
                     <a href="{% url 'create_pharmacy' %}">Add Pharmacy</a>
                 </p>
             </div>
             <div class="record-section">
                 <h2>Medications</h2>
-                <table class="record-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Strength</th>
-                            <th>Directions</th>
-                            <th>Prescriber</th>
-                            <th>Condition Used For</th>
-                            <th>Pharmacy</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for medication in user.medications.all %}
+                <div class="table-container">
+                    <table class="record-table">
+                        <thead>
                             <tr>
-                                <td>
-                                    <a href="{% url 'med_info' medication.id %}">{{ medication.name }}</a>
-                                </td>
-                                <td>{{ medication.strength }}</td>
-                                <td>{{ medication.directions }}</td>
-                                <td>{{ medication.doctor }}</td>
-                                <td>{{ medication.condition_used_for }}</td>
-                                <td>{{ medication.pharmacy }}</td>
-                                <td>
-                                    <a href="{% url 'update_medication' medication.id %}">Edit Medication</a>
-                                </td>
+                                <th>Name</th>
+                                <th>Strength</th>
+                                <th>Directions</th>
+                                <th>Prescriber</th>
+                                <th>Condition Used For</th>
+                                <th>Pharmacy</th>
+                                <th></th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {% for medication in user.medications.all %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'med_info' medication.id %}">{{ medication.name }}</a>
+                                    </td>
+                                    <td>{{ medication.strength }}</td>
+                                    <td>{{ medication.directions }}</td>
+                                    <td>{{ medication.doctor }}</td>
+                                    <td>{{ medication.condition_used_for }}</td>
+                                    <td>{{ medication.pharmacy }}</td>
+                                    <td>
+                                        <a href="{% url 'update_medication' medication.id %}">Edit Medication</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
                 <p>
                     <a href="{% url 'create_medication' %}">Add Medication</a>
                 </p>
