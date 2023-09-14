@@ -163,9 +163,7 @@ p label {
 .table-container {
   width: 100%;
 }
-/* Add a media query for smaller screens */
 
-/* Style for the collapsed columns */
 @media screen and (max-width: 768px) {
   .table-container {
     overflow-x: auto;
@@ -173,12 +171,9 @@ p label {
   }
 
   .record-table {
-    white-space: nowrap; /* Prevent line breaks within cells */
+    white-space: nowrap;
   }
   .record-grid {
-    grid-template-columns: repeat(
-      1,
-      1fr
-    ); /* Change to a single column layout */
+    grid-template-columns: repeat(1, 1fr);
   }
 }
