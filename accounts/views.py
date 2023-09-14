@@ -44,8 +44,8 @@ def user_signup(request):
                     last_name=last_name,
                     password=password,
                 )
-            login(request, user)
-            return redirect("my_record")
+                login(request, user)
+                return redirect("create_details")
     else:
         form = SignupForm()
     context = {
