@@ -13,3 +13,9 @@ class MedicationForm(ModelForm):
             "condition_used_for",
             "pharmacy",
         )
+
+    def __init__(self, user, *args, **kwargs):
+        super(MedicationForm, self).__init__(*args, **kwargs)
+        self.fields['doctor'].queryset = user.doctors.all()
+        self.fields['pharmacy'].queryset = user.pharmacies.all()
+        self.fields['condition_used_for'].queryset = user.diseases.all()

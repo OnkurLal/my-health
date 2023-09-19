@@ -10,14 +10,14 @@ import requests
 @login_required
 def create_medication(request):
     if request.method == "POST":
-        form = MedicationForm(request.POST)
+        form = MedicationForm(request.user, request.POST)
         if form.is_valid():
             medication = form.save(False)
             medication.patient = request.user
             medication.save()
             return redirect("my_record")
     else:
-        form = MedicationForm()
+        form = MedicationForm(request.user)
     context = {
         "form": form,
     }
@@ -28,12 +28,12 @@ def create_medication(request):
 def update_medication(request, id):
     medication = get_object_or_404(Medication, id=id)
     if request.method == "POST":
-        form = MedicationForm(request.POST, instance=medication)
+        form = MedicationForm(request.user, request.POST, instance=medication)
         if form.is_valid():
             form.save()
             return redirect("my_record")
     else:
-        form = MedicationForm(instance=medication)
+        form = MedicationForm(request.user, instance=medication)
     context = {
         "form": form,
         "medication": medication,
