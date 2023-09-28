@@ -10,6 +10,7 @@ Welcome to My Health! My Health is a comprehensive health management application
   - git clone https://gitlab.com/Onkurlal/my-health.git
 - Navigate to my-health
   - cd next-weather-app
+- Create virtual environment
 - Install dependencies
   - pip install -r requirements.txt
 - Start development server
